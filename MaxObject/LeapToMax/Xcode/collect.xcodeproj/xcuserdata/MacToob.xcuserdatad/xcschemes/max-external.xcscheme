@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2FBBEAD608F335360078DB84"
-               BuildableName = "collect.mxo"
+               BuildableName = "LeapToMax.mxo"
                BlueprintName = "max-external"
                ReferencedContainer = "container:collect.xcodeproj">
             </BuildableReference>

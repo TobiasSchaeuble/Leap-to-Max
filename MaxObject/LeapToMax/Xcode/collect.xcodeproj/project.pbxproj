@@ -9,13 +9,33 @@
 /* Begin PBXBuildFile section */
 		222B12E90F140BDF008B1A46 /* LeapToMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 222B12E80F140BDF008B1A46 /* LeapToMax.cpp */; };
 		252574280EEED91700A5E83E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 252574260EEED91700A5E83E /* commonsyms.c */; };
+		312F4A12182583D40030DD73 /* Leap.h in Headers */ = {isa = PBXBuildFile; fileRef = 312F4A11182583D40030DD73 /* Leap.h */; };
+		312F4A14182583DD0030DD73 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 312F4A13182583DD0030DD73 /* libLeap.dylib */; };
+		312F4A16182584050030DD73 /* LeapMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 312F4A15182584050030DD73 /* LeapMath.h */; };
+		312F4A18182585A10030DD73 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 312F4A13182583DD0030DD73 /* libLeap.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		312F4A171825858B0030DD73 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				312F4A18182585A10030DD73 /* libLeap.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		222B12E80F140BDF008B1A46 /* LeapToMax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeapToMax.cpp; sourceTree = "<group>"; };
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
 		252574260EEED91700A5E83E /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
 		2FBBEAE508F335360078DB84 /* LeapToMax.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeapToMax.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		312F4A11182583D40030DD73 /* Leap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leap.h; sourceTree = "<group>"; };
+		312F4A13182583DD0030DD73 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libLeap.dylib; sourceTree = "<group>"; };
+		312F4A15182584050030DD73 /* LeapMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapMath.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -23,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				312F4A14182583DD0030DD73 /* libLeap.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,9 @@
 		08FB77ADFE841716C02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				312F4A15182584050030DD73 /* LeapMath.h */,
+				312F4A11182583D40030DD73 /* Leap.h */,
+				312F4A13182583DD0030DD73 /* libLeap.dylib */,
 				222B12E80F140BDF008B1A46 /* LeapToMax.cpp */,
 				252574260EEED91700A5E83E /* commonsyms.c */,
 			);
@@ -63,6 +87,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				312F4A12182583D40030DD73 /* Leap.h in Headers */,
+				312F4A16182584050030DD73 /* LeapMath.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +104,7 @@
 				2FBBEADA08F335360078DB84 /* Sources */,
 				2FBBEADC08F335360078DB84 /* Frameworks */,
 				2FBBEADF08F335360078DB84 /* Rez */,
+				312F4A171825858B0030DD73 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -160,6 +187,11 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../LeapDeveloperKit/LeapSDK/lib/libc++\"",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
 				PRODUCT_NAME = LeapToMax;
 			};
@@ -170,6 +202,11 @@
 			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../LeapDeveloperKit/LeapSDK/lib/libc++\"",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
 				PRODUCT_NAME = LeapToMax;
 			};

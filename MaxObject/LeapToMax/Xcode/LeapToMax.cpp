@@ -17,6 +17,8 @@
 #include "ext_common.h"
 #include "ext_systhread.h"
 
+#include "Leap.h"
+
 
 #include <vector>
 using namespace std;
@@ -68,7 +70,6 @@ typedef struct _LeapToMax {
 	numberVector		*c_vector;	// note: you must store this as a pointer and not directly as a member of the object's struct
 	void				*c_outlet;
     void                *c_outlet1;
-    void                *c_outlet2;
 	t_systhread_mutex	c_mutex;
 } t_LeapToMax;
 
@@ -78,10 +79,6 @@ void*	LeapToMax_new(t_symbol *s, long argc, t_atom *argv);
 void	LeapToMax_free(t_LeapToMax* x);
 void	LeapToMax_assist(t_LeapToMax *x, void *b, long m, long a, char *s);
 void	LeapToMax_bang(t_LeapToMax *x);
-void	LeapToMax_count(t_LeapToMax *x);
-void	LeapToMax_int(t_LeapToMax *x, long value);
-void	LeapToMax_float(t_LeapToMax *x, double value);
-void	LeapToMax_list(t_LeapToMax *x, t_symbol *msg, long argc, t_atom *argv);
 void	LeapToMax_clear(t_LeapToMax *x);
 void	LeapToMax_identify(t_LeapToMax *x);
 
@@ -102,11 +99,7 @@ int T_EXPORT main(void)
 							0);
 
 	class_addmethod(c, (method)LeapToMax_bang,      "bang",             0);
-	class_addmethod(c, (method)LeapToMax_int,       "int",              A_LONG,	0);
-	class_addmethod(c, (method)LeapToMax_float,     "float",            A_FLOAT,0);
-	class_addmethod(c, (method)LeapToMax_list,      "list",             A_GIMME,0);
 	class_addmethod(c, (method)LeapToMax_clear,     "clear",            0);
-	class_addmethod(c, (method)LeapToMax_count,     "count",            0);
 	class_addmethod(c, (method)LeapToMax_assist,    "assist",           A_CANT, 0);
 	class_addmethod(c, (method)stdinletinfo,        "inletinfo",        A_CANT, 0);
     class_addmethod(c, (method)LeapToMax_identify,	"identify",         0);
@@ -130,12 +123,12 @@ void *LeapToMax_new(t_symbol *s, long argc, t_atom *argv)
 		systhread_mutex_new(&x->c_mutex, 0);
 		x->c_outlet = outlet_new(x, NULL);
         
-        x->c_outlet2 = bangout((t_object *)x);
+        
         x->c_outlet1 = intout((t_object *)x);
         
 		x->c_vector = new numberVector;
 		x->c_vector->reserve(10);
-		LeapToMax_list(x, gensym("list"), argc, argv);
+		
 	}
 	return(x);
 }
@@ -164,88 +157,9 @@ void LeapToMax_assist(t_LeapToMax *x, void *b, long msg, long arg, char *dst)
 
 void LeapToMax_bang(t_LeapToMax *x)
 {
+    outlet_int(x->c_outlet1, 89);
     
-    
-    outlet_bang(x->c_outlet2);
-    outlet_int(x->c_outlet1, 84);
-    
-    
-    
-	//numberIterator iter, begin, end;
-	/*int i = 0;
-	long ac = 0;
-	t_atom *av = NULL;
-	double value;*/
-
-	/*DPOST("head\n");
-	systhread_mutex_lock(x->c_mutex);
-	ac = x->c_vector->size();
-
-	DPOST("ac=%ld\n", ac);
-	if (ac)
-		av = new t_atom[ac];
-
-	if (ac && av) {
-		DPOST("assigning begin and end\n");
-		begin = x->c_vector->begin();
-		end = x->c_vector->end();
-
-		DPOST("assigning iter\n");
-		iter = begin;
-
-		DPOST("entering for\n", ac);
-		for (;;) {
-			DPOST("i=%i\n", i);
-			(*iter).getValue(value);
-			atom_setfloat(av+i, value);
-
-			DPOST("incrementing\n");
-			i++;
-			iter++;
-
-			DPOST("comparing\n");
-			if (iter == end)
-				break;
-		}
-		systhread_mutex_unlock(x->c_mutex);	// must unlock before calling _clear() or we will deadlock
-
-		DPOST("about to clear\n", ac);
-		LeapToMax_clear(x);
-
-		DPOST("about to outlet\n", ac);
-		outlet_anything(x->c_outlet, gensym("list"), ac, av); // don't want to call outlets in mutexes either
-
-		DPOST("about to delete\n", ac);
-		delete[] av;
-	}
-	else*/
-		systhread_mutex_unlock(x->c_mutex);
 }
-
-
-void LeapToMax_count(t_LeapToMax *x)
-{
-	outlet_int(x->c_outlet, x->c_vector->size());
-}
-
-
-void LeapToMax_int(t_LeapToMax *x, long value)
-{
-    error("int as input for MaxToLeap is not allowed");
-}
-
-
-void LeapToMax_float(t_LeapToMax *x, double value)
-{
-	error("float as input for MaxToLeap is not allowed");
-}
-
-
-void LeapToMax_list(t_LeapToMax *x, t_symbol *msg, long argc, t_atom *argv)
-{
-	error("list as input for MaxToLeap is not allowed");
-}
-
 
 void LeapToMax_clear(t_LeapToMax *x)
 {
