@@ -3,40 +3,40 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>13A603</string>
+	<string>10K549</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>LeapToMax</string>
+	<string>Zebra2</string>
+	<key>CFBundleGetInfoString</key>
+	<string>Zebra2  V2.5.4</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.cycling74.LeapToMax</string>
+	<string>com.u-he.Zebra2.vst</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.1.1</string>
-	<key>CFBundleLongVersionString</key>
-	<string>LeapToMax 6.1.0, Copyright 2013 Cycling '74</string>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Zebra2</string>
 	<key>CFBundlePackageType</key>
-	<string>iLaX</string>
+	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6.1.0</string>
+	<string>V2.5.4</string>
 	<key>CFBundleSignature</key>
-	<string>max2</string>
+	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>6.1.0</string>
-	<key>CSResourcesFileMapped</key>
-	<true/>
+	<string>2.5.4</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvmgcc42</string>
 	<key>DTPlatformBuild</key>
-	<string>4H1003</string>
+	<string>10M2518</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>PG</string>
 	<key>DTSDKBuild</key>
-	<string>13A603</string>
+	<string>9L31a</string>
 	<key>DTSDKName</key>
-	<string></string>
+	<string>macosx10.5</string>
 	<key>DTXcode</key>
-	<string>0462</string>
+	<string>0400</string>
 	<key>DTXcodeBuild</key>
-	<string>4H1003</string>
+	<string>10M2518</string>
 </dict>
 </plist>
